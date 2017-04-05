@@ -90,10 +90,21 @@
 
 				<div class="card-section subscription-details fade">
 					<h2><svg class="boldicon" id="complete-3"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#boldicon-check-circle-cutout"></use></svg><span id="progress-3">Step 3:</span> Subscription Details</h2>
-					<div class="field">
-						<label class="order-details">
+
+					<div class="loader sub-loader" id="sub-loader"></div>
+
+					<div class="field sub-content" id="sub-content" style="display:none;">
+						<div class="order-details">
 							<div class="field-label pointer">Orders will generate every: </div><select class="select-field inline" id="frequency_num"></select> <select class="select-field inline" id="frequency_type"></select>
-						</label>
+							<br/><br/>
+							<label class="field-label pointer" style="display:none;" id="is_prepaid_or_limited"><input type="checkbox" />&nbsp;&nbsp;Click here to have customers prepay for their subscription</label>
+							<label class="field-label pointer" style="display:none;" id="is_limited"><input type="radio" checked="checked" />&nbsp;&nbsp;This subscription lasts for a limited number of orders</label>
+							<div class="subscription-length-details" id="sub-length-container" style="display:none;">
+								<label class="field-label pointer">Subscription Length:
+									<select id="sub-length-select" class="select-field inline"></select>
+								</label>
+							</div>
+						</div>
 						<button type="button" id="finalize" class="btn btn-primary fade" style="margin-top:10px;" onclick="finalize()">Continue</button>
 					<!--
 					  <label class="field-label">Choose a variant from the list</label>
@@ -189,7 +200,7 @@
 
 	<div id="form-generation" style="display:none;">
 		<form action="/cart/add" id="product-form" method="post"> 
-			<input type="hidden" data-price="0.00" name="id" value="" />
+			<input type="hidden" id="variant-id-input" data-price="0.00" name="id" value="" />
 			<input type="hidden" class="addtocart" />
 			<div class="product_rp_div"></div>
 		</form>
@@ -209,17 +220,6 @@
 			</div>
 		</div>
 	
-	</script>
-
-	<!--used as an empty template of a product form for loading the widget onto-->
-	<script type="text/template" id="product-form-template">
-
-		<form action="/cart/add" id="product-form" method="post"> 
-			<input type="hidden" data-price="0.00" name="id" value="" />
-			<input type="hidden" class="addtocart" />
-			<div class="product_rp_div"></div>
-		</form>
-
 	</script>
 
 	<svg class="boldicon-sprite" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
