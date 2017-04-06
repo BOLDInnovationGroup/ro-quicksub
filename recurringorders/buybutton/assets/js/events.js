@@ -3,7 +3,7 @@ document.querySelector(".overlay__inner").addEventListener("click", function(eve
 });
 
 document.querySelector(".overlay").addEventListener("click", function(event){
-	overlay("overlay");
+	overlayHide("overlay");
 });
 
 document.querySelector(".btn-go-shopify").addEventListener("click", function(event){
@@ -42,4 +42,14 @@ document.querySelector('#variant-id').addEventListener('change', function(){
 	document.getElementById('variant-price-display').innerHTML = 'Regular Price: ' + Shopify.formatMoney(active_variant_price, productData[active_product_id].money_format);
 	backToStep2();
 
+});
+
+document.getElementById("copy-code-btn").addEventListener("click", function() {
+    copyToClipboard(document.getElementById("buy-button-code"));
+    $( "#buy-button-code" ).effect( "highlight" );
+});
+
+document.getElementById("copy-link-btn").addEventListener("click", function() {
+    copyLinkToClipboard(document.getElementById("buy-button-code"));
+    $( "#buy-button-code" ).effect( "highlight" );
 });

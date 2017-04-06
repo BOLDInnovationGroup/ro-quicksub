@@ -3,14 +3,20 @@
 "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en-US">
 <head profile="http://www.w3.org/2005/10/profile">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Recurring Orders Buy Button</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/bold-ro-styles.css" />
 	<link rel="stylesheet" type="text/css" href="assets/css/bevy.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
 	<link rel="icon" type="image/png" href="assets/img/favicon-32x32.png" sizes="32x32">
 	<link rel="icon" type="image/png" href="assets/img/favicon-16x16.png" sizes="16x16">
 	<script
   src="https://code.jquery.com/jquery-1.12.4.min.js"
   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+  <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
   crossorigin="anonymous"></script>
 	<script src="assets/js/app.js"></script>
 	<script src="assets/js/money_format_helper.js"></script>
@@ -41,6 +47,14 @@
 					</div>
 					<h2>Be Careful!</h2>
 					<p>Only use this tool if you are very familiar with your Recurring Orders subscription groups. If any of the information entered does not align with your subscription groups, the Buy Button will not work.</p>
+				</div>
+				
+				<div class="message with-success with-icon code-display fade" id="code-display" style="float:left;text-align:left;padding-left:20px;display:none;" style="margin-bottom: 16px">
+					<h2>You made a Buy Button!</h2>
+					<p>Use the following code snippet to place a subscription Buy Button on a platform of your choice, including any pages on your Shopify store:</p>
+					<textarea disabled class="code-snippet" id="buy-button-code"></textarea>
+					<button type="button" class="btn btn-primary mod" id="copy-link-btn">Copy Link</button>
+					<button type="button" class="btn btn-primary mod" id="copy-code-btn">Copy Text</button>
 				</div>
 
 			</aside>

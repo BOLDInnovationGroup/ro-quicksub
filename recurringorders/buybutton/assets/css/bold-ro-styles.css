@@ -1,10 +1,36 @@
 html, body{
    height: 100%;
+   position: relative !important;
 }
 body{
   background:#ccc;
-  position:relative;
+  position:relative !important;
 }
+#copy-code-btn, #copy-link-btn{
+  float:right;
+}
+.code-snippet{
+  font-family: 'Source Code Pro', monospace;
+  display: block;
+  opacity: 1;
+  background-color: #EFEFEF;
+  color: #333;
+  padding: 20px;
+  overflow: auto;
+  font-size: 12px;
+  line-height: 16px;
+  border: 2px solid #b3b3b3;
+  border-radius: 4px;
+  resize: none;
+  width: 100%;
+  min-height: 100px;
+  height: auto;
+  word-wrap: inherit;
+  }
+.code-display{
+  background-color:#5a5a5a !important;
+}
+
 .subscription-length-details{
   margin-left:19px;
 }
@@ -14,6 +40,16 @@ body{
 
 #complete-1, #complete-2, #complete-3{
   display:none;
+}
+
+.btn.btn-primary.mod{
+    color: #000000;
+    background-color: #efefef;
+    margin: 10px 2px;
+}
+.btn.btn-primary.mod:hover{
+   background-color: #ffffff;
+    margin: 10px 2px;
 }
 
 .content.loading, .content.page-nav, .content.product-cards, .content.product-cards-info, .card-section.subscription-details, .card-section.variant-select, .card-section.terms, .card-section.get-codes{
@@ -52,7 +88,7 @@ body{
 .overlay {
   display:none;
   opacity: 0;
-  position: absolute;
+  position: fixed;
   left: 0px;
   top: 0px;
   width:100%;

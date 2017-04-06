@@ -59,7 +59,7 @@ function useProduct(product_el){
 	document.getElementById('select-prod').innerHTML = 'Change Product';
 
 	displayProductVariants(product_id);
-	overlay('overlay', function(){
+	overlayHide('overlay', function(){
 		overlayShow('variant-select', function(){
 			backToStep2();
 		});
@@ -81,6 +81,7 @@ function backToStep2(){
 	overlayHide('subscription-details', function(){
 		overlayHide('terms', function(){
 			overlayHide('get-codes', function(){
+				overlayHide('code-display');
 			});
 		});
 	});
@@ -120,6 +121,7 @@ function fetchSubscriptionDetails(){
 	document.getElementById('progress-2').style.display = 'none';
 	document.getElementById('complete-2').style.display = 'inline-block';
 	document.getElementById('select-variant').style.display = 'none';
+	document.getElementById('buy-button-code').style.display = 'none';
 
     $('script').each(function() {
         if (this.src === 'https://ro.boldapps.net/assets_embed/js/bold.js') {
@@ -365,8 +367,18 @@ function getCode(){
 		+ "&rup=" + active_unformatted_discounted_price 
 		+ "&tr=" + total_recurrences;
 	}
-	
-	alert('Your subscribe link is: ' + active_code);
+
+	active_embed_code = '<button type="button" class="ro-subscribe-btn" onclick="window.location=\'' + active_code + '\'">Subscribe Now!</button>';
+
+	document.getElementById('buy-button-code').innerHTML = active_embed_code;
+	overlayShow('code-display', function(){
+		setTimeout(function(){
+			$( "#buy-button-code" ).fadeIn(100, function(){
+				$( "#buy-button-code" ).effect( "shake" );
+			});
+		}, 700);
+	});
+
 }
 
 function displayProductCards(page){
@@ -467,6 +479,27 @@ function overlay(elementClass, callback) {
 
 function isHidden(el) {
     return (el.offsetParent === null);
+}
+
+function copyLinkToClipboard(elem){
+	elem.innerHTML = active_code;
+	copyToClipboard(elem);
+	elem.innerHTML = active_embed_code;
+}
+
+function copyToClipboard(elem) {
+  var copyTextarea = elem;
+  copyTextarea.disabled = false;
+  copyTextarea.select();
+
+  try {
+    var successful = document.execCommand('copy');
+    var msg = successful ? 'successful' : 'unsuccessful';
+    console.log('Copying text command was ' + msg);
+  } catch (err) {
+    console.log('Oops, unable to copy');
+  }
+  copyTextarea.disabled = true;
 }
 
 function extractDomain(url) {
